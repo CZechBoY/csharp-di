@@ -22,7 +22,7 @@ namespace MyNamespace
 Container dic = new Container();
 
 // make MyApplication instance with resolved dependencies (in constructor only)
-MyApplication app = (MyApplication)dic.GetService(typeof(MyApplication));
+MyApplication app = dic.GetService<MyApplication>();
 app.run();
 ```
 
@@ -50,11 +50,11 @@ namespace MyNamespace
 Container dic = new Container();
 
 // get instance of handler resolver which we can setup
-MyHandlerResolver handlerResolver = (MyHandlerResolver) dic.GetService(typeof(MyHandlerResolver));
+MyHandlerResolver handlerResolver = dic.GetService<MyHandlerResolver>();
 
 // get all classes that implements IHandler interface
 // note: not classses, but already instanced objects
-var handlers = dic.GetByInterface(typeof(IHandler));
+var handlers = dic.GetByInterface<IHandler>();
 
 // and iterate over all handlers
 foreach (IHandler handler in handlers)

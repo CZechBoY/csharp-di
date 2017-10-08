@@ -1,7 +1,8 @@
 # di
 Simple Dependency injection container for C#
 
-## Basic service class example
+## Basic usage
+### Basic service class example
 There is no need to specify that class is service! You can make service from whatever, even system classes.
 
 ```csharp
@@ -16,8 +17,7 @@ namespace MyNamespace
     }
 }
 ```
-
-## Basic usage
+### And usage
 ```csharp
 Container dic = new Container();
 

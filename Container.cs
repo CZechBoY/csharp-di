@@ -50,7 +50,12 @@ namespace CZechBoY.DI
             return parametersResolved.ToArray();
         }
 
-        public object GetService(Type type)
+        public T GetService<T>()
+        {
+            return (T) this.GetService(typeof(T));
+        }
+
+        private object GetService(Type type)
         {
             if (this.services.ContainsKey(type) == false)
             {
@@ -60,18 +65,18 @@ namespace CZechBoY.DI
             return this.services[type];
         }
 
-        public IEnumerable<object> GetByInterface(Type type)
+        public IEnumerable<T> GetByInterface<T>()
         {
-            List<object> servicesImplementingInterface = new List<object>();
+            List<T> servicesImplementingInterface = new List<T>();
 
             Type[] classesImplementingInterface = Assembly.GetExecutingAssembly()
                 .GetTypes()
-                .Where(classType => classType.GetInterfaces().Contains(type))
+                .Where(classType => classType.GetInterfaces().Contains(typeof(T)))
                 .ToArray();
 
             foreach (Type classType in classesImplementingInterface)
             {
-                object service = this.GetService(classType);
+                T service = (T) this.GetService(classType);
                 servicesImplementingInterface.Add(service);
             }
 

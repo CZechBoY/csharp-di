@@ -1,6 +1,6 @@
-﻿using System;
+using System;
 
-namespace ChServer.DI
+namespace CZechBoY.DI
 {
     class NotSingleConstructorException : Exception
     {
